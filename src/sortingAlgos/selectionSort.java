@@ -1,4 +1,5 @@
 package sortingAlgos;
+//select first smallest element and place it in 1st index, 2nd smallest in 2nd index ...
 
 public class selectionSort {
 

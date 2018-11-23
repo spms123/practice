@@ -8,42 +8,47 @@ public class MaxNonNegSubArray {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] A = { 1, 2, 5, -7, 2, 3 };
-		nonNegSubArray(A);
+		int[] A = {1, 0, 4, 0, 1, -1,-1, 0, 0, 1, 0};
+//		int[] ret = nonNegSubArray(A);
+//		for (int i : ret) {
+//			System.out.print(i+ " ");
+//		}
+		System.out.println(nonNegSubArray(A));
 	}
 
-	private static void nonNegSubArray(int[] a) {
-		// TODO Auto-generated method stub
-		ArrayList<Integer> currList = new ArrayList<>();
-		ArrayList<Integer> maxList = new ArrayList<>();
-		
-		int curSum = 0;
-		int maxSum = 0;
-		for (int i = 0; i < a.length; i++) {
-			if (a[i] > 0) {
-				curSum +=  a[i];
-				currList.add(a[i]);				
-			} else {
-				
+	private static int nonNegSubArray(int[] a) {
+		int[] maxArr = new int[a.length];
+		int[] temp = new int[a.length];
+		int prevSum = 0;
+		int count = 0;
+		int start = 0;
+		for (int i = start; i < a.length; i++) {
+			while (i < a.length && a[i] > 0) {
+				temp[count] = a[i];
+				i++;
+				count++;
 			}
-			
-			if(curSum > maxSum) {
-				maxSum = curSum;
+			int curSum = getSum(temp);
+			if (curSum > prevSum) {
+				prevSum = curSum;
+				maxArr = temp;
 			}
-				
-
+			if (i < a.length) {
+				temp = new int[a.length];
+				start = i;
+				count = 0;
+			}
 		}
-
-		
-
+		return prevSum;
+		// TODO Auto-generated method stub
 	}
 
-	private static int getSum(ArrayList<Integer> singleList) {
+	private static int getSum(int[] temp) {
 		// TODO Auto-generated method stub
 		int sum = 0;
-		Iterator<Integer> i = singleList.iterator();
-		while (i.hasNext())
-			sum += i.next();
+		for (int i : temp) {
+			sum += i;
+		}
 		return sum;
 	}
 

@@ -19,11 +19,6 @@ public class Multiply2StringNumbers {
 		for(int i = s1.length()-1; i>0;i--) {
 			for(int j = s2.length()-1;j>0;j--) {
 				int temp = (s1.charAt(i)-'0') * (s2.charAt(j)-'0') + carry;
-				total = 
-				
-				
-				
-				System.out.println(9%10);
 			}
 		}
 		
